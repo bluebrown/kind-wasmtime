@@ -1,0 +1,19 @@
+
+# azure has adopted these shims
+# as preview feature for AKS
+
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.spin]
+runtime_type = "io.containerd.spin.v1"
+base_runtime_spec = "/etc/containerd/cri-base.json"
+
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.spin.options]
+BinaryName = "/usr/local/bin/containerd-shim-spin-v1"
+SystemdCgroup = true
+
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.slight]
+runtime_type = "io.containerd.slight.v1"
+base_runtime_spec = "/etc/containerd/cri-base.json"
+
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.slight.options]
+BinaryName = "/usr/local/bin/containerd-shim-slight-v1"
+SystemdCgroup = true

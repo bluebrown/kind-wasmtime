@@ -1,0 +1,11 @@
+
+# extra handler to run wasm workloads
+# can be used by creating a rumtime class
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.crun-wasmtime]
+runtime_type = "io.containerd.runc.v2"
+base_runtime_spec = "/etc/containerd/cri-wasm.json"
+pod_annotations = ["module.wasm.image/*"]
+
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.crun-wasmtime.options]
+BinaryName = "/usr/local/bin/crun"
+SystemdCgroup = true

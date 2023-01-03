@@ -1,0 +1,5 @@
+{
+  "annotations": {
+    "module.wasm.image/variant": "compat-smart"
+  }
+}

@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mixed-workload
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      # since we left runc the default runtime,
+      # we use the crun runtime explicitly for this workload
+      runtimeClassName: crun-wasmtime
+      restartPolicy: Never
+      containers:
+        - name: wasm
+          image: wasm-workload:v0.1.0
+          resources: {}
+        - name: regular
+          image: index.docker.io/busybox
+          command: ["echo", "hello, regular :)"]
+          resources: {}
